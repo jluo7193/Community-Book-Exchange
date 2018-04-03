@@ -147,13 +147,14 @@ a.btn-highlight {
 .media-row > figure {
 	margin:0;
 	padding:0 10px;
-
+	height:100%;
 }
 
 .media-row > figure > img {
 	margin:0 20px;
 	height:80%;
 	width:auto;
+	max-width: 140px;
 	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
