@@ -1,0 +1,120 @@
+/*** Global Styles ***/
+
+html, body {
+	height:100%;
+	width:100%;
+	margin:0;
+	font-family: Helvetica Neue, sans-serif;
+	position:relative;
+}
+
+body {
+	max-width:750px;
+	max-height:1330px;
+}
+
+header {
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	position:absolute;
+	top:0;
+	height:64px;
+	width:100%;
+	border-bottom:1px solid #999;
+}
+
+main {
+	position:absolute;
+	top:64px;
+	bottom:70px;
+	width:100%;
+	text-align:center;
+	overflow:hidden;
+}
+
+main.scroll {
+	overflow-y:auto;
+}
+
+nav {
+	position:absolute;
+	bottom:0;
+	height:70px;
+	width:100%;
+	border-top:1px solid #999;
+}
+
+nav > ul {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	list-style: none;
+	display:flex;
+	align-items:stretch;
+	overflow:hidden;
+}
+
+nav > ul > li {
+	flex-basis: 25%;
+	text-align: center;
+}
+
+nav > ul > li.active {
+	background:#ddd;
+}
+
+nav > ul > li > a {
+	padding: 20% 0;
+    display: block;
+    height: 60%;
+    text-decoration:none;
+    color:#111;
+}
+
+nav > ul > li > a > i {
+	display:block;
+	width:100%;
+}	
+
+.sample-msg {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+
+}
+
+a.btn {
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    font-weight: bold;
+}
+
+a.btn-outline {
+	color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    font-weight: bold;
+    border-radius:10px;
+    border: 1px solid #222;
+}
+
+a.btn-highlight {
+	color: #fff;
+	background:#222;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    font-weight: bold;
+    border-radius:10px;
+}
+
+/* Global Styles End */
+
+/*** Add page-specific styles Here ***/
+
