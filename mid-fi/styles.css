@@ -24,6 +24,10 @@ header {
 	border-bottom:1px solid #999;
 }
 
+header > .btn:last-child {
+	text-align: right;
+}
+
 main {
 	position:absolute;
 	top:64px;
@@ -92,6 +96,7 @@ a.btn {
     padding: 10px 20px;
     display: block;
     font-weight: bold;
+    min-width:40px;
 }
 
 a.btn-outline {
@@ -102,6 +107,7 @@ a.btn-outline {
     font-weight: bold;
     border-radius:10px;
     border: 1px solid #222;
+    min-width:40px;
 }
 
 a.btn-highlight {
@@ -112,9 +118,54 @@ a.btn-highlight {
     display: block;
     font-weight: bold;
     border-radius:10px;
+    min-width:40px;
 }
 
 /* Global Styles End */
 
 /*** Add page-specific styles Here ***/
 
+/*** HOME ***/
+.media-row-title {
+    margin-top: 35px;
+    margin-bottom:15px;
+    text-align: left;
+    padding: 0 15px;
+    font-size: 25px;
+}
+
+.media-row-title > i:last-child {
+	float:right;
+}
+
+.media-row {
+	height:175px;
+	overflow:auto;
+	display: flex;
+}
+
+.media-row > figure {
+	margin:0;
+	padding:0 10px;
+
+}
+
+.media-row > figure > img {
+	margin:0 20px;
+	height:80%;
+	width:auto;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.media-row > figure > figcaption {
+    height: 20%;
+    white-space: nowrap;
+    max-width: 125px;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    text-overflow: ellipsis;
+    display: inline-block;
+    padding-top: 5px;
+}
