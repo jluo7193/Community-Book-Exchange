@@ -80,7 +80,7 @@ nav > ul > li > a {
 nav > ul > li > a > i {
 	display:block;
 	width:100%;
-}	
+}
 
 .sample-msg {
 	position:absolute;
@@ -188,14 +188,34 @@ img.camera {
     width: 60%;
 		padding: 150px;
 		transform: rotate(90deg);
-	
+
+}
+
+img.addbook {
+	margin-top: 90px;
+	margin-left: 130px;
+}
+
+
+h4.addbook {
+	margin-top: -240px;
+	margin-left: 320px;
+	border-bottom:1px solid #999;
 }
 
 p.addbook {
-	padding: 100px;
-	margin-top: auto;
+	margin-left: 321px;
 }
 
-/* p.addbook {
-	text-align:justify;
+p.rectbtn {
+    margin-left: 315px;
+    margin-top: -34px;
+}
+
+/* i.far fa-square {
+	font-size: 20px;
+} */
+
+/* p.addbookbtn {
+	width:50px;
 } */
