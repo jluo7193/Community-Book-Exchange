@@ -137,6 +137,10 @@ a.btn-highlight {
 .media-row-title > i:last-child {
 	float:right;
 }
+.media-row-title > a:last-child {
+	color: #000;
+	float:right;
+}
 
 .media-row {
 	height:175px;
@@ -170,3 +174,28 @@ a.btn-highlight {
     display: inline-block;
     padding-top: 5px;
 }
+
+/*** ADD BOOKS ***/
+
+h3.addbook {
+	width:55%;
+}
+
+img.camera {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+		padding: 150px;
+		transform: rotate(90deg);
+	
+}
+
+p.addbook {
+	padding: 100px;
+	margin-top: auto;
+}
+
+/* p.addbook {
+	text-align:justify;
+} */
