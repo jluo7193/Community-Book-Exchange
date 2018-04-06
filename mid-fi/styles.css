@@ -175,7 +175,7 @@ a.btn-highlight {
     padding-top: 5px;
 }
 
-/*** ADD BOOKS ***/
+/*** ADD BOOK ***/
 
 h3.addbook {
 	width:55%;
@@ -208,14 +208,44 @@ p.addbook {
 }
 
 p.rectbtn {
-    margin-left: 315px;
-    margin-top: -34px;
+  margin-left: 315px;
+  margin-top: -34px;
 }
 
-/* i.far fa-square {
-	font-size: 20px;
-} */
+/*** ADD COMMUNITY ***/
 
-/* p.addbookbtn {
-	width:50px;
-} */
+h3.addcommunity {
+	width:56%;
+}
+
+form.communityform {
+	padding-top:100px;
+	margin-left:50px;
+}
+
+p.rectbtncomm {
+  margin-left: 315px;
+  margin-top: -42px;
+}
+
+/*** NOTIFICATIONS ***/
+
+.alert {
+    padding: 20px;
+    padding-top: 115px;
+
+}
+
+.closebtn {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
