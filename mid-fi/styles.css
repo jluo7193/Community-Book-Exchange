@@ -470,3 +470,16 @@ p.rectbtncomm {
 	opacity:0.5;
 }
 >>>>>>> 750697718f6cc37f1d3326e1fa7ac5dd9cb4363a
+
+/* PROFILE */
+.profile-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
