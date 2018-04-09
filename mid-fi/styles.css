@@ -81,7 +81,7 @@ nav > ul > li > a {
 nav > ul > li > a > i {
 	display:block;
 	width:100%;
-}	
+}
 
 .sample-msg {
 	position:absolute;
@@ -140,6 +140,10 @@ a.btn-highlight {
 .media-row-title > i:last-child {
 	float:right;
 }
+.media-row-title > a:last-child {
+	color: #000;
+	float:right;
+}
 
 .media-row {
 	height:175px;
@@ -184,6 +188,82 @@ a.btn-highlight {
     padding-top: 5px;
 }
 
+<<<<<<< HEAD
+/*** ADD BOOK ***/
+
+h3.addbook {
+	width:55%;
+}
+
+img.camera {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+		padding: 150px;
+		transform: rotate(90deg);
+
+}
+
+img.addbook {
+	margin-top: 90px;
+	margin-left: 130px;
+}
+
+
+h4.addbook {
+	margin-top: -240px;
+	margin-left: 320px;
+	border-bottom:1px solid #999;
+}
+
+p.addbook {
+	margin-left: 321px;
+}
+
+p.rectbtn {
+  margin-left: 315px;
+  margin-top: -34px;
+}
+
+/*** ADD COMMUNITY ***/
+
+h3.addcommunity {
+	width:56%;
+}
+
+form.communityform {
+	padding-top:100px;
+	margin-left:50px;
+}
+
+p.rectbtncomm {
+  margin-left: 315px;
+  margin-top: -42px;
+}
+
+/*** NOTIFICATIONS ***/
+
+.alert {
+    padding: 20px;
+    padding-top: 115px;
+
+}
+
+.closebtn {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+=======
 .media-row.small > figure > a figcaption {
 	display: none;
 }
@@ -389,3 +469,4 @@ a.btn-highlight {
 	z-index: 1;
 	opacity:0.5;
 }
+>>>>>>> 750697718f6cc37f1d3326e1fa7ac5dd9cb4363a
