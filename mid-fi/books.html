@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">    
+    <link rel="stylesheet" href="jstyles.css">
+    
+    <title>Community Books</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script src="books.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="btn"><i class="far fa-star"></i> 4.5</a>
+        <h5>Hello <b>John</b></h5>
+        <a class="btn"><i class="fa fa-lg fa-bell"></i></a>        
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-bottom bg-light">
+		<ul>
+ 			<li><a href="index.html"><i class="fa fa-lg fa-home"></i>Home</a></li>
+			<li class="active"><a href="books.html"><i class="fa fa-lg fa-book"></i>Books</a></li>
+			<li><a href="communities.html"><i class="fa fa-lg fa-users"></i>Communities</a></li>
+			<li><a href="profile.html"><i class="fa fa-lg fa-user"></i>Profile</a></li>
+		</ul>
+	</nav>
+
+    
+    <!--<div class="jumbotron text-center text-white">
+        <h1>Community Books</h1>
+        <p>Welcome <strong>John</strong> to your neighborhood online book exchange!</p>
+    </div> -->
+
+    <div class="container">
+        <form class="search-box mx-auto">
+            <input class="form-control mr-sm-2" type="text" id="search" name="search" placeholder="Search books" onkeyup="unnecessarysearch()" onkeypress="return event.keyCode != 13;"/>
+        </form>
+
+        <hr class="ml-5 mr-5">
+
+        <div class="card-columns">
+
+        <div class="card" onclick= "window.location.href = 'viewBook.html?id={$id}';">
+            <img class='card-img-top' src='img/joyceulysses.jpeg' alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Ulysses</h4>
+                <p class="card-text">Renowned book by James Joyce</p>
+                <footer>
+                    <small class="text-muted">
+                        <cite class="text-right" title="Author">James Joyce</cite>
+                    </small>
+                </footer>
+            </div>
+        </div>
+
+
+        <div class="card" onclick= "window.location.href = 'viewBook.html?id={$id}';">
+            <img class='card-img-top' src='img/tomsawyer.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Tom Sawyer</h4>
+                <p class="card-text">A book about the adventures of a young boy</p>
+                <footer>
+                    <small class="text-muted">
+                        <cite class="text-right" title="Author">Mark Twain</cite>
+                    </small>
+                </footer>
+            </div>
+        </div>
+        
+        <div class="card" onclick= "window.location.href = 'viewBook.html?id={$id}';">
+            <img class='card-img-top' src='img/chrono.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">The Chronology of Water</h4>
+                <p class="card-text">This is not your mother's memoir. Powerful piece</p>
+                <footer>
+                    <small class="text-muted">
+                        <cite class="text-right" title="Author">Lidia Yuknavitch</cite>
+                    </small>
+                </footer>
+            </div>
+        </div>
+
+        <div class="card" onclick= "window.location.href = 'viewBook.html?id={$id}';">
+            <img class='card-img-top' src='img/confederacy.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">A Confederacy of Dunces</h4>
+                <p class="card-text">Published post-mortem, this novel is a witty, satirical vignette of Ignatius</p>
+                <footer>
+                    <small class="text-muted">
+                        <cite class="text-right" title="Author">John Kennedy Toole</cite>
+                    </small>
+                </footer>
+            </div>
+        </div>
+
+        <div class="card" onclick= "window.location.href = 'viewBook.html?id={$id}';">
+            <img class='card-img-top' src='img/electricsheep.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Do Androids Dream of Electric Sheep?</h4>
+                <p class="card-text">Sci-fi novel exploring the future of artificial intelligence</p>
+                <footer>
+                    <small class="text-muted">
+                        <cite class="text-right" title="Author">Philip K. Dick</cite>
+                    </small>
+                </footer>
+            </div>
+        </div>
+
+        <div class="card" onclick= "window.location.href = 'viewBook.html?id={$id}';">
+            <img class='card-img-top' src='img/slaughter.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Slaughterhouse Five</h4>
+                <p class="card-text">An interesting sci-fi post WWII anti-war novel</p>
+                <footer>
+                    <small class="text-muted">
+                        <cite class="text-right" title="Author">Kurt Vonnegut</cite>
+                    </small>
+                </footer>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+  <div id="DEBUG"></div>
+
+<!--<script type="text/javascript">
+function search() {
+    let jArray= <?php echo json_encode($map); ?>;
+    let text = document.getElementById("search").value.toLowerCase();
+    let count = 0;
+    let toRet = "";
+    for (key in jArray) {
+    if (key.toLowerCase().indexOf(text) !== -1) {
+        toRet += jArray[key];
+    }
+    }
+    if (toRet === "") {
+    document.getElementsByClassName("card-columns")[0].innerHTML = "<b>No Results Found!</b>";            
+    } else {
+    document.getElementsByClassName("card-columns")[0].innerHTML = toRet;            
+    }
+}
+
+function unnecessarysearch() {
+    search();
+}
+</script>
+-->
+</body>
+
+</html>

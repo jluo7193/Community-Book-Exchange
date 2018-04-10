@@ -1,0 +1,136 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0 !important;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card {
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.card-columns {
+    @include media-breakpoint-only(lg) {
+      column-count: 4;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 5;
+    }
+}
+
+img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.container {
+    margin-top: 60px;
+}
+
+.jumbotron {
+    /*background: url("header.jpg") no-repeat center center;*/
+    background: black;
+    background-position: 75% 45%;
+    background-size: cover;
+    border-radius: 0px;
+    margin-top: 48px;
+}
+
+.search-box {
+    width: 60%;
+}
+
+.justify-left{
+    justify-content: left !important;
+}
+
+.justify-right {
+    justify-content: right !important;
+}
+
+.dish-name {
+    width: inherit !important;
+}
+
+.text-small {
+    font-size: 12px;
+    color: gray;
+}
+
+nav {
+	position:absolute;
+	bottom:0;
+	height:75px;
+	width:100%;
+	border-top:1px solid #aaa;
+}
+
+nav.fixed-bottom > ul {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	list-style: none;
+	display:flex;
+	align-items:stretch;
+	overflow:hidden;
+}
+
+nav.fixed-bottom > ul > li {
+	flex-basis: 25%;
+	text-align: center;
+}
+
+nav.fixed-bottom > ul > li.active {
+	background:#ddd;
+}
+
+nav.fixed-bottom > ul > li > a {
+	padding: 5% 0;
+    display: block;
+    height: 30%;
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+}
+
+nav.fixed-bottom > ul > li > a > i {
+	display:block;
+	width:100%;
+}
+
+nav.fixed-top {
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	position:absolute;
+	top:0;
+	height:48px;
+	width:100%;
+    border-bottom:1px solid #aaa;
+    background: black;
+    color: white;
+}
+
+nav.fixed-top > .btn:last-child {
+	text-align: right;
+}
+
+div.card-body {
+    text-align: center;
+}
+
+html { 
+    margin-bottom: 80px 
+}
