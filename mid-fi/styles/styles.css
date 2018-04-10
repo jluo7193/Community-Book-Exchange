@@ -9,8 +9,8 @@ html, body {
 }
 
 body {
-	max-width:750px;
-	max-height:1330px;
+	max-width:450px;
+	max-height:750px;
 }
 
 header {
@@ -31,7 +31,7 @@ header > .btn:last-child {
 main {
 	position:absolute;
 	top:64px;
-	bottom:70px;
+	bottom:61px;
 	width:100%;
 	text-align:center;
 	overflow:hidden;
@@ -103,7 +103,7 @@ a.btn {
     min-width:40px;
 }
 
-a.btn-outline {
+.btn-outline {
     text-decoration: none;
     padding: 10px 20px;
     display: block;
@@ -111,6 +111,7 @@ a.btn-outline {
     border-radius:10px;
     border: 1px solid #222;
     min-width:40px;
+    text-align: center;
 }
 
 a.btn-highlight {
@@ -122,6 +123,29 @@ a.btn-highlight {
     font-weight: bold;
     border-radius:10px;
     min-width:40px;
+    text-align: center;
+}
+
+.btn-full {
+	width:100%;
+}
+
+input {
+	font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #777;
+}
+
+select {
+	font-size: 18px;
+    font-weight: bold;
+}
+
+label {
+	font-size: 14px;
+	font-style: italic;
+	color:#777;
 }
 
 /* Global Styles End */
@@ -188,45 +212,57 @@ a.btn-highlight {
     padding-top: 5px;
 }
 
-<<<<<<< HEAD
 /*** ADD BOOK ***/
 
-h3.addbook {
-	width:55%;
+main.addbook {
+	width:90%;
+	padding: 15px 5%;
+	text-align: left;
 }
 
-img.camera {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-		padding: 150px;
-		transform: rotate(90deg);
-
+.addbook input {
+	margin-bottom:15px;
 }
 
-img.addbook {
-	margin-top: 90px;
-	margin-left: 130px;
+.addbook img {
+	float:left;
+	margin-right:15px;
+	margin-bottom: 15px;
 }
 
-
-h4.addbook {
-	margin-top: -240px;
-	margin-left: 320px;
-	border-bottom:1px solid #999;
+.addbook .btn-full {
+	width:90%;
+	position: absolute;
+	bottom:0;
+	padding-left: 0;
+    padding-right: 0;
 }
 
-p.addbook {
-	margin-left: 321px;
-}
-
-p.rectbtn {
-  margin-left: 315px;
-  margin-top: -34px;
+.camera {
+	display:block;
+	position:absolute;
+	top:50%;
+	width:60%;
+	margin:0 20%;
+	transform:translateY(-50%) rotate(90deg);
 }
 
 /*** ADD COMMUNITY ***/
+
+main.addcommunity {
+	width:90%;
+	padding: 15px 5%;
+	text-align: left;
+}
+
+.addcommunity .btn-full {
+	width:90%;
+	position: absolute;
+	bottom:0;
+	padding-left: 0;
+    padding-right: 0;
+}
+
 
 h3.addcommunity {
 	width:56%;
@@ -263,7 +299,7 @@ p.rectbtncomm {
 .closebtn:hover {
     color: black;
 }
-=======
+
 .media-row.small > figure > a figcaption {
 	display: none;
 }
@@ -469,4 +505,16 @@ p.rectbtncomm {
 	z-index: 1;
 	opacity:0.5;
 }
->>>>>>> 750697718f6cc37f1d3326e1fa7ac5dd9cb4363a
+
+/* PROFILE */
+.profile-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
