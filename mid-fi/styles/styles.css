@@ -205,6 +205,11 @@ label {
 .media-row-title > i:last-child {
 	float:right;
 }
+
+.media-row-title > a {
+	text-decoration:none;
+}
+
 .media-row-title > a:last-child {
 	color: #000;
 	float:right;
@@ -554,8 +559,53 @@ p.rectbtncomm {
   display: block;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: 5px;
-  margin-left: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding:15px 30px;
+}
+
+
+.profile-row > i:first-child {
+	float:left;
+}
+
+.profile-row > h4 {
+	font-size: 20px;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.stats {
+	text-align:right;
+}
+
+.media-row.long-caption {
+
+}
+
+.media-row.long-caption > figure {
+	position: relative;
+	margin: 0 20px;
+    padding: 0;
+}
+
+.media-row.long-caption  > figure > a img {
+	height:100%;
+	margin:0;
+}
+
+.media-row.long-caption > figure > a figcaption {
+	max-width:none;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    margin: 0;
+    display: block;
+    width: 100%;
+    background: #00000091;
+    color: #fff;
+    text-align: left;
+    font-size: 12px;
+    padding: 8px 5px;
+    box-sizing: border-box;
 }
