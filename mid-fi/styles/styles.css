@@ -130,6 +130,11 @@ a.btn-highlight {
 	width:100%;
 }
 
+img {
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
 input {
 	font-size: 14px;
     padding: 5px;
@@ -167,8 +172,6 @@ label {
 .tile > img {
 	width:100%;
 	height:auto;
-	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
    	border:1px solid #eee;
 }
 
@@ -608,4 +611,49 @@ p.rectbtncomm {
     font-size: 12px;
     padding: 8px 5px;
     box-sizing: border-box;
+}
+
+/* BOOK DETAILS */
+.title {
+	font-size: 22px;
+	font-weight: bold;
+	margin-top:0;
+}
+.description {
+	margin-top: 145px;
+	font-style: italic;
+	color:#444;
+	text-indent:35px;
+	font-size:14px;
+}
+
+.addbook .btn-r {
+	width:90%;
+	position: absolute;
+	bottom:16px;
+	padding-left: 0;
+    padding-right: 0;
+}
+
+/* USER LIST */
+.users {
+	list-style: none;
+	margin: 0;
+    padding: 0;
+}
+
+.users > li {
+	display: flex;
+    justify-content: space-between;
+    padding:5px 0 5px 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.users > li > span {
+	padding:10px 0;
+}
+
+.request-book .condition {
+	font-style: italic;
 }
