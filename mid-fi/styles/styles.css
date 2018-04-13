@@ -148,6 +148,47 @@ label {
 	color:#777;
 }
 
+.tile-column {
+    display: inline-flex;
+    flex-direction:column;
+    width: 33%;
+    float: left;
+    margin-top:10px;
+}
+
+.tile {
+	width:100%;
+	display:block;
+	padding: 2% 4%;
+	box-sizing:border-box;
+	position: relative;
+}
+
+.tile > img {
+	width:100%;
+	height:auto;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+   	border:1px solid #eee;
+}
+
+.tile > h4 {
+    position: absolute;
+    font-size: 10px;
+    color: #fff;
+    bottom: 2%;
+    padding: 2px 5px;
+    text-align: left;
+    background: #00000091;
+    display: block;
+    width: 92%;
+    margin: 0 1px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 /* Global Styles End */
 
 /*** Add page-specific styles Here ***/
