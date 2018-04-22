@@ -33,8 +33,8 @@ class Main extends Component {
     return(
       <Switch>
         <Route path="/home" render={(props) => <Home data={this.props.data} user={this.props.user} />} />
-        <Route path="/books" component={(props) => <Books books={this.props.data.books} />}/>
-        <Route path="/communities" component={(props) => <Communities communities={this.props.data.communities} />}/>
+        <Route path="/books" render={(props) => <Books data={this.props.data} />}/>
+        <Route path="/communities" render={(props) => <Communities communities={this.props.data.communities} />}/>
         <Route path="/profile" render={(props) => <Profile data={this.props.data} user={this.props.user} />}/>
       </Switch>
     );

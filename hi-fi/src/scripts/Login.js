@@ -6,7 +6,7 @@ class Login extends Component {
 	constructor(props){
 		super(props);
 		this.login = this.login.bind(this);
-		this.state = {loggedUser:0, errorMsg:""};
+		this.state = {loggedUser:-1, errorMsg:""};
 	}
 
 	login(e){
@@ -28,15 +28,17 @@ class Login extends Component {
 
 	render(){
 		let login = (
-			<form className="login-form">
-				<h2>Community<br/>Books</h2>
-				{this.state.errorMsg && (<Alert bsStyle="danger">{this.state.errorMsg}</Alert>)}
-				<label>Username</label>
-				<input id="username" className="form-control" placeholder="&#xf007; Username" type="text"/>
-				<label>Password</label>
-				<input id="password" className="form-control" placeholder="&#xf023; Password" type="password"/>
-				<input type="submit" onClick={this.login}/>
-			</form>
+			<div className="login-page">
+				<h2>Community<br/><span className="accent">Books</span></h2>
+				<form className="login-form">
+					{this.state.errorMsg && (<Alert bsStyle="danger">{this.state.errorMsg}</Alert>)}
+					<label>Username</label>
+					<input id="username" className="form-control" placeholder="&#xf007; Username" type="text"/>
+					<label>Password</label>
+					<input id="password" className="form-control" placeholder="&#xf023; Password" type="password"/>
+					<input className="whiteframe-shadow-8dp" type="submit" value="Login" onClick={this.login}/>
+				</form>
+			</div>
 		);
 
 		let app = <App userId={this.state.loggedUser} />;

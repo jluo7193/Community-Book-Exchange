@@ -25,7 +25,6 @@ export class MediaGallery extends Component {
 		let list1, list2, list3, filteredMedia;
 
 		if(this.props.media) {
-			console.log(this.state.searchStr);
 			filteredMedia = this.props.media.filter(m => m.title.toLowerCase().includes(this.state.searchStr.toLowerCase()));
 			list1 = filteredMedia.reduce((l, m, i) => pushItem(l, m, i, 0), []);
 			list2 = filteredMedia.reduce((l, m, i) => pushItem(l, m, i, 1), []);
@@ -140,7 +139,7 @@ class MediaItem extends Component {
 
 		return (
 			<figure className="media whiteframe-shadow-8dp">
-				<Link to={"/books/" + media.id}>
+				<Link to={"/books/" + media.id} >
 					<img src={media.img} />
 					<div className="figcaption-bg" style={{backgroundImage:'url(' + media.img + ')'}}>
 						{media.title}

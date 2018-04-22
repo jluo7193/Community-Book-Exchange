@@ -44,8 +44,11 @@ html, body {
 }
 
 body {
-  max-width:450px;
-  max-height:750px;
+/*  max-width:450px;
+  max-height:750px;*/
+  position: absolute;
+  top:0;
+  bottom:0;
 }
 
 header {
@@ -62,13 +65,17 @@ header {
 }
 
 header > * {
-	flex:0 0 33%;
+	flex:0 0 25%;
 }
 
 header h3 {
 	margin:0;
-	font-size:18px;
+	font-size:16px;
 	text-align: center;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	flex:0 0 50%;
 }
 
 header > .btn {
@@ -210,13 +217,25 @@ label {
   color:#777;
 }
 
+.search-bar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #666;
+    opacity: 1; /* Firefox */
+}
+
+.search-bar:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #666;
+}
+
+.search-bar::-ms-input-placeholder { /* Microsoft Edge */
+    color: #666;
+}
 
 .search-bar {
 	font-family: FontAwesome, sans-serif;
     font-size: 20px;
     padding: 5px 15px;
     border: 2px solid #666;
-    border-radius: 30px;
+    border-radius: 15px;
     /*box-shadow: 1px 1px 1px #aaa;*/
     background:#F2F2F2;
     height:35px;
@@ -225,11 +244,26 @@ label {
 .search-bar:focus {
 	outline:none;
 	border-color:#0468BF;
-	background:#fff;
+	border-color:#E91E63;
+	color: #E91E63;
+	/*background:#fff;*/
+}
+
+.search-bar:focus::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #E91E63;
+}
+
+.search-bar:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #E91E63;
+}
+
+.search-bar:focus::-ms-input-placeholder { /* Microsoft Edge */
+    color: #E91E63;
 }
 
 .search-bar:focus + button {
 	color:#0468BF;
+	color:#E91E63;
 }
 
 
@@ -296,6 +330,7 @@ label {
     max-height:40px;
     color:#0582f0;
     color:#0468BF;
+     color:#E91E63;
     /*text-shadow:1px 1px 1px rgba(0, 0, 0, 0.1);*/
 }
 
@@ -315,7 +350,7 @@ label {
 
 .media-row-title > a:last-child {
   color: #0582f0;
-  color:#0468BF;
+  color:#E91E63;
   margin-left: auto;
 
 }
@@ -754,25 +789,46 @@ p.rectbtncomm {
 }
 
 /* BOOK DETAILS */
-.title {
-  font-size: 22px;
+.book-details {
+	padding:15px;
+	color:#0468BF;
+	text-align: left;
+}
+
+.book-details .title {
+  font-size: 20px;
   font-weight: bold;
   margin-top:0;
 }
-.addbook .description {
-  margin-top: 145px;
+
+.availability {
+	color:#0582f0;
+}
+
+.book-details .description {
+  margin-top:80px;
   font-style: italic;
   color:#444;
   text-indent:35px;
   font-size:14px;
 }
 
-.addbook .btn-r {
-  width:90%;
-  position: absolute;
-  bottom:16px;
+.book-details img {
+	max-width:30%;
+	float:left;
+	margin:0 15px 15px 0;
+}
+
+.book-details .btn-r {
+  width:100%;
+  /*position: absolute;*/
+  /*bottom:16px;*/
   padding-left: 0;
-    padding-right: 0;
+  padding-right: 0;
+  border:none;
+  background-color: #D93250;
+  color:#fff;
+  margin-top:30px;
 }
 
 /* USER LIST */
@@ -802,12 +858,19 @@ p.rectbtncomm {
 .login-form {
 	position: absolute;
 	display:block;
-	top:50%;
+	bottom:0;
 	left:50%;
 	width:90%;
 	max-width: 300px;
-	transform:translate(-50%,-50%);
+    transform: translate(-50%, 0);
+    margin-bottom: 30px;
 }
+
+.login-page .accent { 
+	color:#D93250;
+	font-weight: bold;
+}
+
 
 .login-form .alert {
 	text-align: center;
@@ -821,15 +884,16 @@ p.rectbtncomm {
 	display:none;
 }
 
-.login-form h2 {
-	text-align: center;
+.login-page h2 {
+	text-align: right;
 	font-family: Helvetica Neue;
 	font-weight:400;
 	color: #0468BF;
-	margin-top:0;
-	margin-bottom:30px;
+	margin: 40px auto 0;
 	font-size: 38px;
 	line-height: 50px;
+	width:95%;
+	max-width: 300px;
 
 }
 
@@ -837,7 +901,6 @@ p.rectbtncomm {
 	margin:0 0 10px;
 	border-radius:0;
 	border:none;
-	box-shadow:none;
 	font-size:18px;
 	height:45px;
 	text-align:center;
@@ -846,18 +909,22 @@ p.rectbtncomm {
 
 .login-form input[type=text] {
 	margin-bottom: 0;
-	border-bottom:1px solid #555;
+	border-bottom:1px solid #0468BF;
 }
 
+.login-form input[type=password] {
+	margin-bottom:30px;
+}
 
 .login-form input[type=text], .login-form input[type=password] {
-	background:#eee;
+	background:transparent;
 	font-family: FontAwesome, Helvetica, sans-serif;
+	box-shadow:none;
 }
 
 .login-form input[type=submit] {
 	width:100%;
-	background-color: #0468BF;
+	background-color: #0468BF /*#D93250*/ ;
 	color:#fff;
 	border-radius: 5px;
 }
