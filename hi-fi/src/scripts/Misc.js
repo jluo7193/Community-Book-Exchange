@@ -7,8 +7,8 @@ export class BackButton extends Component {
 
   render() {
     return (
-      <a class="btn" onClick={this.context.router.history.goBack}>
-        <i class="fa fa-chevron-left"></i> Back
+      <a className="btn" onClick={this.context.router.history.goBack}>
+        <i className="fa fa-chevron-left"></i> Back
       </a>
     )
   }
