@@ -34,7 +34,7 @@ class Main extends Component {
       <Switch>
         <Route path="/home" render={(props) => <Home data={this.props.data} user={this.props.user} />} />
         <Route path="/books" render={(props) => <Books data={this.props.data} />}/>
-        <Route path="/communities" render={(props) => <Communities communities={this.props.data.communities} />}/>
+        <Route path="/communities" render={(props) => <Communities data={this.props.data} />}/>
         <Route path="/profile" render={(props) => <Profile data={this.props.data} user={this.props.user} />}/>
         <Route path="/" render={() => <Redirect to="/home"/>} />
       </Switch>

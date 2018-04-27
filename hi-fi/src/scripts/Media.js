@@ -124,8 +124,10 @@ export class MediaRowBody extends Component {
 		  var mediaList = this.props.media.map(m => <MediaItem key={m.id} media={m} />);
 		}
 
+		console.log(this.props.small);
+
 		return (
-			<div className="media-row">
+			<div className={"media-row" + (this.props.small ? ' small' : '')}>
 				{mediaList}
 			</div>
 		);
@@ -139,7 +141,7 @@ class MediaItem extends Component {
 
 		return (
 			<figure className="media whiteframe-shadow-8dp">
-				<Link to={"/books/" + media.id} >
+				<Link to={"/" + media.category + "/" + media.id} >
 					<img src={media.img} />
 					<div className="figcaption-bg" style={{backgroundImage:'url(' + media.img + ')'}}>
 						{media.title}

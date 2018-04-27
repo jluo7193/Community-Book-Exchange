@@ -34,21 +34,21 @@ class AllBooks extends Component {
 
 class BookDetails extends Component {
 	render(){
-		let users, book, count, bookContent;
+		let users = [], book, count, bookContent;
 
 		if(this.props.books){
 			book = this.props.books[this.props.match.params.id]; //this is cheating, but who cares :)
 		}
 		
 		if(this.props.users){
-			users = this.props.users.filter(u => {u.books.indexOf(book.id) > -1});
+			users = this.props.users.filter(u => u.books.indexOf(book.id) > -1);
 			count = users.length === 1 ? users[0].username : users.length + ' users';
 		}
 
 		
 
 		let hLeft = <BackButton></BackButton>;
-		let hRight = <Link className="btn" to="/requestbook">Request</Link>;
+		let hRight = users.length ? <Link className="btn" to="requestbook">Request</Link> : <a className="btn">Waitlist</a> ;
 
 		if(book) {
 			bookContent = (
@@ -57,16 +57,16 @@ class BookDetails extends Component {
 					<main className="scroll book-details">
 						<img className="whiteframe-shadow-4dp" src={book.img} />
 					    <p className="title">{book.title}</p>
-					    <p className="availability">{users.length ? 'Available from ' + count : 'Unavailable'}</p>
+					    { users.length ? <p className="availability">Available from <span>{count}</span></p> : <p className="availability">Unavailable</p> }
 					    <p className="description">{book.description}</p>
-					    {count > 0 && <Link className="btn-outline btn-r" to="/requestbook">Request Book</Link>}
+					    {users.length > 0 && <Link className="whiteframe-shadow-8dp btn-outline btn-r" to="requestbook">Request Book</Link>}
 					    { /*TODO  implement adding it to the user's waitlist and give him a confirmation (change the button to Added to waitlist, and disable it) */}
 					    {users.length === 0 && <button className="whiteframe-shadow-8dp btn-outline btn-r">Add to Waitlist</button>}
 					</main>
 				</div>
 			); 
 		} else {
-			bookContent = <h3>No Book</h3>;
+			bookContent = <h3>No Book Info</h3>;
 		}
 
 		return bookContent;
