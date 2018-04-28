@@ -20,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" onClick={this.props.appClick}>
         <Main data={this.state.appData} user={this.state.loggedUser} />
         <Nav />
       </div>

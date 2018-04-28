@@ -44,7 +44,7 @@ class CommunityDetails extends Component {
 			users = this.props.users.filter(u => u.communities.indexOf(community.id) > -1);
 		}
 
-		if(community && this.props.books){
+		if(community && community.books && this.props.books){
 			books = this.props.books.filter(b => community.books.indexOf(b.id) > -1);
 		}
 
@@ -59,7 +59,7 @@ class CommunityDetails extends Component {
 					<main className="scroll community-details">
 						<ul className="list-description description-row whiteframe-shadow-1dp"  style={{backgroundImage:'url(' + community.img + ')'}}>
 							<li><i className="fa fa-users"></i> {users.length}</li>
-							<li><i className="fa fa-book"></i> {community.books.length}</li>
+							<li><i className="fa fa-book"></i> {community.books && community.books.length || 0}</li>
 							<li><i className="fa fa-map-marker"></i> {community.location}</li>
 							<li className="description">{community.description}</li>
 						</ul>
@@ -78,7 +78,11 @@ class CommunityDetails extends Component {
 
 class EventsTimeline extends Component {
 	render(){
-		let events = this.props.events.map(e => <EventItem key={e.id} event={e} />)
+		let events = [];
+		if(this.props.events){
+			events = this.props.events.map(e => <EventItem key={e.id} event={e} />);
+		}
+
 		return (						
 			<ul className="events-list">
 				<li className="title"><h3 className="media-row-title">Events</h3></li>

@@ -124,8 +124,6 @@ export class MediaRowBody extends Component {
 		  var mediaList = this.props.media.map(m => <MediaItem key={m.id} media={m} />);
 		}
 
-		console.log(this.props.small);
-
 		return (
 			<div className={"media-row" + (this.props.small ? ' small' : '')}>
 				{mediaList}

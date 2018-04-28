@@ -9,7 +9,7 @@ class Profile extends Component {
 		let user = this.props.user; 
 
 		let hLeft = <Link className="btn" to="/notifications"><i className="fa fa-lg fa-bell"></i></Link>;
-		let hRight = <Link className="btn" to="/settings"><i className="fa fa-lg fa-cog"></i></Link>;
+		let hRight = <a id="logout-btn" className="btn"><i id="logout" className="fa fa-lg fa-sign-out"></i></a>;
 
 		if(this.props.data){
 			let borrowedIds = this.props.data.exchanges && this.props.data.exchanges.reduce((l, e) => { if(e.borrowerId === user.id && e.status === "borrowed") l.push(e.bookId); return l }, []);

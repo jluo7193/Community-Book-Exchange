@@ -6,6 +6,7 @@ class Login extends Component {
 	constructor(props){
 		super(props);
 		this.login = this.login.bind(this);
+		this.handleAllClickEvents = this.handleAllClickEvents.bind(this);
 		this.state = {loggedUser:0, errorMsg:""};
 	}
 
@@ -26,6 +27,16 @@ class Login extends Component {
     	});
 	}
 
+	handleAllClickEvents(event) {
+	 	console.log(event.target.id);
+	  	switch(event.target.id) {
+		  	case 'logout-btn':
+		    case 'logout':
+		    	this.setState({ loggedUser: -1 });
+		    	break;
+	  	}
+	}
+
 	render(){
 		let login = (
 			<div className="login-page">
@@ -36,12 +47,12 @@ class Login extends Component {
 					<input id="username" className="form-control" placeholder="&#xf007; Username" type="text"/>
 					<label>Password</label>
 					<input id="password" className="form-control" placeholder="&#xf023; Password" type="password"/>
-					<input className="whiteframe-shadow-8dp" type="submit" value="Login" onClick={this.login}/>
+					<input className="whiteframe-shadow-8dp" type="submit" value="Login" />
 				</form>
 			</div>
 		);
 
-		let app = <App userId={this.state.loggedUser} />;
+		let app = <App userId={this.state.loggedUser} appClick={this.handleAllClickEvents} />;
 
 		return this.state.loggedUser > -1 ? app : login;
 	}
