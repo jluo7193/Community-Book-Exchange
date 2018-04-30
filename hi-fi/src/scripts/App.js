@@ -25,7 +25,6 @@ class App extends Component {
             e.payload.borrowerId = props.userId;
             let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
             newData.exchanges.push(e.payload);
-            console.log(newData);
             return { appData: newData };
           });
           break;

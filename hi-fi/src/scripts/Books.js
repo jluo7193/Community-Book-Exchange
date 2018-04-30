@@ -52,7 +52,22 @@ class BookDetails extends Component {
 				let activeExchange = this.props.exchanges.filter(e => e.bookId === book.id && (e.borrowerId == this.props.user.id || e.lenderId == this.props.user.id) && (e.status === "requested" || e.status === "borrowed"))[0];
 
 				if(activeExchange) {
-					bookStatus = activeExchange.borrowedId === this.props.user.id ? activeExchange.status : activeExchange.status === "borrowed" ? "lent" : "requested";
+					let userRole = activeExchange.lenderId == this.props.user.id ? 'lender' : 'borrower';
+					bookStatus = userRole + '-';
+
+					if(activeExchange.status === "requested") {
+						if(Object.keys(activeExchange.pickup).length === 0 && activeExchange.pickup.constructor === Object) { // Empty pickup object
+							bookStatus += "requested-pickup-notset";
+						} else {
+							bookStatus += "requested-pickup-" + activeExchange.pickup.status;
+						}
+					} else if(activeExchange.status === "borrowed") {
+						if(Object.keys(activeExchange.return).length === 0 && activeExchange.pickup.constructor === Object) { // Empty pickup object
+							bookStatus += "borrowed-return-notset";
+						} else {
+							bookStatus += "borrowed-return-" + activeExchange.pickup.status;
+						}
+					}
 				} else if(this.props.user.waitlist.indexOf(this.props.match.params.id) > -1) {
 					bookStatus = "waitlisted";
 				} else if(!users.length) {
@@ -66,27 +81,66 @@ class BookDetails extends Component {
 
 		if(book) {
 			let actionButton, hRight, alert;
-
 			switch(bookStatus){
 				case 'waitlisted':
 					//TODO Implement onClick - removing from waitlist
 					actionButton = <button className="whiteframe-shadow-4dp btn-outline btn-r">Remove From Waitlist</button>;
 					break;
-				case 'requested':
-					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Requested</button>;
-					alert = <Alert bsStyle="warning"><strong>Book requested.</strong> Awaiting Confirmation</Alert>;
+				case 'lender-requested-pickup-notset':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Setup Pickup</button>;
+					alert = <Alert bsStyle="danger"><strong>Book requested.</strong> Setup Pickup</Alert>;
+					hRight = <a className="btn">Setup</a>;
 					break;
-				case 'borrowed':
+				case 'lender-requested-pickup-pending':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="warning"><strong>Pickup Set.</strong> Awaiting Confirmation</Alert>;
+					break;
+				case 'lender-requested-pickup-confirmed':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="success"><strong>Pickup Confirmed.</strong> Awaiting Exchange</Alert>;
+					break;
+				case 'lender-borrowed-return-notset':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Book Lent</button>;
+					break;
+				case 'lender-borrowed-return-pending':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Confirm Return</button>;
+					alert = <Alert bsStyle="danger"><strong>Return Requested.</strong> Confirm Exchange</Alert>;
+					hRight = <a className="btn">Confirm</a>;
+					break;
+				case 'lender-return-confirmed':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="success"><strong>Return Confirmed.</strong> Awaiting Exchange</Alert>;
+					break;
+				case 'borrower-requested-pickup-notset':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="warning"><strong>Book Requested.</strong> Awaiting Confimation</Alert>;
+					break;
+				case 'borrower-requested-pickup-pending':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Confirm Pickup</button>;
+					alert = <Alert bsStyle="danger"><strong>Book requested.</strong> Confirm Pickup</Alert>;
+					hRight = <a className="btn">Confirm</a>;
+					break;
+				case 'borrower-requested-pickup-confirmed':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="success"><strong>Pickup Confirmed.</strong> Awaiting Exchange</Alert>;
+					break;
+				case 'borrower-borrowed-return-notset':
 					//TODO Implement onClick - requesting to return a book
 					actionButton = <button className="whiteframe-shadow-4dp btn-outline btn-r">Return</button>;
 					hRight = <a className="btn">Return</a>;
 					break;
+				case 'borrower-borrowed-return-pending':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="danger"><strong>Book requested.</strong> Confirm Pickup</Alert>;
+					hRight = <a className="btn">Confirm</a>;
+					break;
+				case 'borrower-return-confirmed':
+					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Pending</button>;
+					alert = <Alert bsStyle="success"><strong>Return Confirmed.</strong> Awaiting Exchange</Alert>;
+					break;
 				case 'unavailable':
 					actionButton = <button className="whiteframe-shadow-8dp btn-outline btn-r">Add to Waitlist</button>;
 					hRight = <a className="btn">Waitlist</a>;
-					break;
-				case 'lent':
-					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Book Lent</button>;
 					break;
 				default:
 					actionButton = <Link className="whiteframe-shadow-8dp btn-outline btn-r" to={this.props.match.url + "/request"}>Request Book</Link>;

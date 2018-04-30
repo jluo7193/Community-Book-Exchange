@@ -386,6 +386,7 @@ label {
   overflow-x:auto;
   display: flex;
   padding-bottom:15px;
+  padding-right:15px;
 }
 
 .media-row.small {
@@ -429,6 +430,106 @@ figure.media {
 .media-row.small figure.media {
       flex:0 0 80px;
       margin:0 10px;
+}
+
+/** BOOK STATUS **/
+.my-books figure.media.requested-pickup-notset > a::after,
+.my-books figure.media.borrowed-return-pending > a::after,
+.borrowed-books figure.media.requested-pickup-pending > a::after  {
+    content: '\f071 Action Needed';
+    font-family: FontAwesome, sans-serif;
+    position: absolute;
+    color: #fff;
+    background-color: darkred;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 3px 0;
+    box-shadow: 0 1px #00000030;
+}
+
+.my-books figure.media.requested-pickup-notset > a::before,
+.my-books figure.media.borrowed-return-pending > a::before,
+.borrowed-books figure.media.requested-pickup-pending > a::before  {
+  content:'';
+  position: absolute;
+  background-color: #f443369c; /* Red - Action Required */
+  width:100%;
+  height:100%;
+  z-index:1;
+}
+
+.my-books figure.media.requested-pickup-pending > a::after,
+.borrowed-books figure.media.requested-pickup-notset > a::after,
+.borrowed-books figure.media.borrowed-return-pending > a::after {
+    content: '\f021 Pending';
+    font-family: FontAwesome, sans-serif;
+    position: absolute;
+    color: #fff;
+    background-color: darkorange;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 3px 0;
+    box-shadow: 0 1px #00000030;
+}
+
+.my-books figure.media.requested-pickup-pending  > a::before,
+.borrowed-books figure.media.requested-pickup-notset > a::before,
+.borrowed-books figure.media.borrowed-return-pending > a::before {
+  content:'Pending';
+  position: absolute;
+  background-color: #ffc107ad; /* Yellow - Waiting for other Party */
+  width:100%;
+  height:100%;
+  z-index:1;
+}
+
+.my-books figure.media.requested-pickup-confirmed > a::after,
+.my-books figure.media.borrowed-return-confirmed > a::after,
+.borrowed-books figure.media.requested-pickup-confirmed > a::after,
+.borrowed-books figure.media.borrowed-return-confirmed > a::after {
+
+    content: '\f00C Confirmed';
+    font-family: FontAwesome, sans-serif;
+    position: absolute;
+    color: #fff;
+    background-color: darkgreen;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 3px 0;
+    box-shadow: 0 1px #00000030;
+}
+
+.my-books figure.media.requested-pickup-confirmed > a::before,
+.my-books figure.media.borrowed-return-confirmed > a::before,
+.borrowed-books figure.media.requested-pickup-confirmed > a::before,
+.borrowed-books figure.media.borrowed-return-confirmed > a::before {
+  content:'';
+  position: absolute;
+  background-color: #8bc34a9c; /* Green - Waiting Exchange */
+  width:100%;
+  height:100%;
+  z-index:1;
+}
+
+.my-books figure.media.borrowed-return-notset > a::after {
+    content: 'Borrowed';
+    font-family: FontAwesome, sans-serif;
+    position: absolute;
+    color: #fff;
+    background-color: #777;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 3px 0;
+    box-shadow: 0 1px #00000030;
+}
+
+.my-books figure.media.borrowed-return-notset > a img,
+.my-books figure.media.borrowed-return-notset > a .figcaption-bg {
+  opacity:0.3;
 }
 
 figure.media > a img {
@@ -489,6 +590,7 @@ figure.media > a figcaption {
     margin: 0;
     color: #fff;
     box-sizing: border-box;
+    z-index:2;
 
 }
 

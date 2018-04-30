@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {Alert} from 'react-bootstrap';
 import App from './App';
+import Dispatcher from './Dispatcher';
 
 class Login extends Component {
 	constructor(props){
 		super(props);
 		this.login = this.login.bind(this);
-		this.handleAllClickEvents = this.handleAllClickEvents.bind(this);
-		this.state = {loggedUser:2, errorMsg:""};
+		this.state = {loggedUser:0, errorMsg:""};
 	}
 
 	login(e){
@@ -27,13 +27,14 @@ class Login extends Component {
     	});
 	}
 
-	handleAllClickEvents(event) {
-	  	switch(event.target.id) {
-		  	case 'logout-btn':
-		    case 'logout':
-		    	this.setState({ loggedUser: -1 });
-		    	break;
-	  	}
+	componentDidMount() {
+	    Dispatcher.register(e => {
+	      switch(e.actionType) {
+	        case 'logout':
+	          this.setState({ loggedUser: -1 });
+	          break;
+	      }
+	    });
 	}
 
 	render(){
@@ -46,12 +47,12 @@ class Login extends Component {
 					<input id="username" className="form-control" placeholder="&#xf007; Username" type="text"/>
 					<label>Password</label>
 					<input id="password" className="form-control" placeholder="&#xf023; Password" type="password"/>
-					<input className="whiteframe-shadow-8dp" type="submit" value="Login" />
+					<input className="whiteframe-shadow-8dp" type="submit" onClick={this.login} value="Login" />
 				</form>
 			</div>
 		);
 
-		let app = <App userId={this.state.loggedUser} appClick={this.handleAllClickEvents} />;
+		let app = <App userId={this.state.loggedUser}/>;
 
 		return this.state.loggedUser > -1 ? app : login;
 	}

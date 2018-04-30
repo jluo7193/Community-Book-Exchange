@@ -40,10 +40,12 @@
 	],
 
 	"exchanges":[
-		{"bookId":12, "borrowerId":0, "lenderId":1, "status":"requested", "pickup":{ "date":"", "location":"", "confirmed":"pending"} , "return":{}},
-		{"bookId":5, "borrowerId":0, "lenderId":1, "status":"borrowed"},
-		{"bookId":3, "borrowerId":1, "lenderId":0, "status":"returned"},
-		{"bookId":16, "borrowerId":0, "lenderId":1, "status":"requested"}
+		{"bookId":12, "borrowerId":2, "lenderId":0, "status":"requested", "pickup":{"date":"", "location":"", "status":"pending"} , "return":{}},
+		{"bookId":9, "borrowerId":2, "lenderId":0, "status":"requested", "pickup":{"date":"", "location":"", "status":"confirmed"} , "return":{}},
+		{"bookId":5, "borrowerId":0, "lenderId":1, "status":"borrowed", "pickup":{}, "return":{}},
+		{"bookId":3, "borrowerId":2, "lenderId":0, "status":"requested", "pickup":{}, "return":{}},
+		{"bookId":4, "borrowerId":2, "lenderId":0, "status":"borrowed", "pickup":{}, "return":{}},
+		{"bookId":16, "borrowerId":0, "lenderId":1, "status":"requested", "pickup":{}, "return":{}}
 	],
 
 	"users":[

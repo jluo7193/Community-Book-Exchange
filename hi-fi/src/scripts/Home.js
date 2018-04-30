@@ -27,7 +27,7 @@ class Home extends Component {
 
 	    return (
 	    	<div>
-		    	<Header leftBtn={hLeft} title={"Hello " + user.firstName} rightBtn={hRight}/>
+		    	<Header leftBtn={hLeft} title={"Hello, " + user.firstName} rightBtn={hRight}/>
 				<main className="scroll">
 					<MediaRow title="Books" media={suggestedBooks} addLink="/addbook"/>
 					<MediaRow title="Communities" media={suggestedCommunities} addLink="/addcommunity"/>
