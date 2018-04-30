@@ -53,7 +53,7 @@ body {
 
 header {
   display:flex;
-  justify-content:space-between;
+  /*justify-content:space-between;*/
   align-items:center;
   position:absolute;
   top:0;
@@ -87,6 +87,10 @@ header > .btn:last-child {
   text-align: right;
 }
 
+button[disabled] {
+  background: #aaa !important;
+}
+
 main {
   position:absolute;
   top:50px;
@@ -94,12 +98,23 @@ main {
   width:100%;
   text-align:center;
   overflow:hidden;
-  background-color:#F2F2F2;
+  background-color:#F5F5F5;
   z-index:-1;
 }
 
 main.scroll {
   overflow-y:auto;
+}
+
+main .alert {
+  margin-top: -15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  position: relative;
+  box-shadow: 0 0 2px #00000030;
+  border: none;
+  border-radius: 0;
+  text-align: center;
 }
 
 nav {
@@ -108,7 +123,7 @@ nav {
   height:50px;
   width:100%;
   z-index:1;
-  box-shadow: 0px 0px 10px #333333aa;
+  box-shadow: 0px 0px 8px #33333355;
 }
 
 nav > ul {
@@ -981,20 +996,33 @@ p.rectbtncomm {
 .users {
   list-style: none;
   margin: 0;
-    padding: 0;
+  padding: 0;
+  box-shadow:0 1px 1px #00000020 ;
 }
 
 .users > li {
   display: flex;
     justify-content: space-between;
-    padding:5px 0 5px 15px;
+    padding:5px 0;
     border-bottom: 1px solid #ccc;
+    background: #fff;
 }
 
 
 .users > li > span {
   padding:10px 0;
+  color:#555;
 }
+
+.users > li > .btn {
+  text-align: right;
+  color:#0468BF;
+}
+
+.users > li > :nth-child(1) { font-weight:bold; flex:0 0 25%; }
+.users > li > :nth-child(2) { flex:0 0 15%; }
+.users > li > :nth-child(3) { flex:0 0 25%; }
+.users > li > :nth-child(4) { flex:0 0 35%; }
 
 .request-book .condition {
   font-style: italic;

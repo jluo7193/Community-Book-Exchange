@@ -7,7 +7,7 @@ class Login extends Component {
 		super(props);
 		this.login = this.login.bind(this);
 		this.handleAllClickEvents = this.handleAllClickEvents.bind(this);
-		this.state = {loggedUser:0, errorMsg:""};
+		this.state = {loggedUser:2, errorMsg:""};
 	}
 
 	login(e){
@@ -28,7 +28,6 @@ class Login extends Component {
 	}
 
 	handleAllClickEvents(event) {
-	 	console.log(event.target.id);
 	  	switch(event.target.id) {
 		  	case 'logout-btn':
 		    case 'logout':

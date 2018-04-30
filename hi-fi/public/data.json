@@ -47,8 +47,8 @@
 	],
 
 	"users":[
-		{"id":0, "username":"jdoe", "password":"foo", "firstName":"John", "lastName":"Doe", "rating":4.8, "img":"/img/adam.jpg", "communities":[0,5], "books":[0,9,3,4,12], "waitlist":[0,1,2,3]},
-		{"id":1, "username":"jbond", "password":"foo", "firstName":"James", "lastName":"Bond", "rating":3.2, "img":"/img/ben.png", "communities":[6,8], "books":[1,2,5,6,7,8,16], "waitlist":[13]},
+		{"id":0, "username":"jdoe", "password":"foo", "firstName":"John", "lastName":"Doe", "rating":4.8, "img":"/img/adam.jpg", "communities":[0,5], "books":[{"id":0, "condition":"Good"},{"id":9, "condition":"Fair"},{"id":3, "condition":"Poor"},{"id":4, "condition":"Good"},{"id":12, "condition":"Good"}], "waitlist":[0,1,2,3]},
+		{"id":1, "username":"jbond", "password":"foo", "firstName":"James", "lastName":"Bond", "rating":3.2, "img":"/img/ben.png", "communities":[6,8], "books":[{"id":0, "condition":"Poor"},{"id":1, "condition":"Good"},{"id":2, "condition":"Fair"},{"id":5, "condition":"Poor"},{"id":6, "condition":"Good"},{"id":7, "condition":"Good"},{"id":12, "condition":"Good"}], "waitlist":[13]},
 		{"id":2, "username":"mjane", "password":"foo", "firstName":"Mary", "lastName":"Jane", "rating":2.8, "communities":[6,8], "books":[], "waitlist":[13]}
 	]
 }

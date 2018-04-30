@@ -12,14 +12,14 @@ class Profile extends Component {
 		let hRight = <a id="logout-btn" className="btn"><i id="logout" className="fa fa-lg fa-sign-out"></i></a>;
 
 		if(this.props.data){
-			let borrowedIds = this.props.data.exchanges && this.props.data.exchanges.reduce((l, e) => { if(e.borrowerId === user.id && e.status === "borrowed") l.push(e.bookId); return l }, []);
+			let borrowedIds = this.props.data.exchanges && this.props.data.exchanges.reduce((l, e) => { if(e.borrowerId === user.id && (e.status === "borrowed" || e.status === "requested")) l.push(e.bookId); return l }, []);
 
 			//Show only the books belonging to this user
-			myBooks = this.props.data.books && this.props.data.books.filter(b => user.books.indexOf(b.id) > -1);
+			myBooks = this.props.data.books && this.props.data.books.filter(b => user.books.indexOf(b.id) > -1); //BookId + Book Join
 			//TODO Add the status of the books to each object by joning with "exchanges" on bookId
-			myCommunities = this.props.data.communities && this.props.data.communities.filter(c => user.books.indexOf(c.id) > -1);
-			borrowedBooks = this.props.data.books && this.props.data.books.filter(c => borrowedIds.indexOf(c.id) > -1);
-			waitlist = this.props.data.books && this.props.data.books.filter(b => user.waitlist.indexOf(b.id) > -1); 				
+			myCommunities = this.props.data.communities && this.props.data.communities.filter(c => user.books.indexOf(c.id) > -1); //CommunityId + Community Join
+			borrowedBooks = this.props.data.books && this.props.data.books.filter(b => borrowedIds.indexOf(b.id) > -1); //BookId + Book Join
+			waitlist = this.props.data.books && this.props.data.books.filter(b => user.waitlist.indexOf(b.id) > -1); //BookId + Book Join				
 		}
 
 	    return (
