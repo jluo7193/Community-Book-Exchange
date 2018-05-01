@@ -44,7 +44,7 @@ class Profile extends Component {
 			//Show only the books belonging to this user
 			myBooks = user.books.map(b => data.books[b.id]); //BookId + Book Join
 			myBooks = myBooks.map(setStatus);
-			myCommunities = data.communities.filter(c => user.books.indexOf(c.id) > -1); //CommunityId + Community Join
+			myCommunities = data.communities.filter(c => user.communities.indexOf(c.id) > -1); //CommunityId + Community Join
 			borrowedBooks = data.books.filter(b => borrowedIds.indexOf(b.id) > -1); //BookId + Book Join
 			borrowedBooks = borrowedBooks.map(setStatus);
 			waitlist = data.books.filter(b => user.waitlist.indexOf(b.id) > -1); //BookId + Book Join				

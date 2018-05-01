@@ -28,6 +28,31 @@ class App extends Component {
             return { appData: newData };
           });
           break;
+        case 'join-community':
+          this.setState((state, props) => {
+            let cId = parseInt(e.payload.communityId);
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            if(newUser.communities.indexOf(cId) === -1) {
+              newUser.communities.push(cId);
+              newData.users[newUser.id] = newUser;
+            }
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
+        case 'leave-community':
+          this.setState((state, props) => {
+            let cId = parseInt(e.payload.communityId);
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            let idx = newUser.communities.indexOf(cId);
+            if(idx > -1) {
+              newUser.communities.splice(idx, 1);
+              newData.users[newUser.id] = newUser;
+            }
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
       }
     });
   }
@@ -48,7 +73,7 @@ class Main extends Component {
       <Switch>
         <Route path="/home" render={(props) => <Home data={this.props.data} user={this.props.user} />} />
         <Route path="/books" render={(props) => <Books data={this.props.data} user={this.props.user} />}/>
-        <Route path="/communities" render={(props) => <Communities data={this.props.data} />}/>
+        <Route path="/communities" render={(props) => <Communities data={this.props.data} user={this.props.user} />}/>
         <Route path="/profile" render={(props) => <Profile data={this.props.data} user={this.props.user} />}/>
         <Route path="/" render={() => <Redirect to="/home"/>} />
       </Switch>

@@ -3,13 +3,14 @@ import { Link, Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import { MediaGallery, MediaRowBody } from './Media';
 import { BackButton } from './Misc';
+import Dispatcher from './Dispatcher';
 
 
 class Communities extends Component {
 	render() {
 	    return (
 	    	<Switch>
-	    		<Route path="/communities/:id" render={(props) => <CommunityDetails {...props} communities={this.props.data.communities} books={this.props.data.books} users={this.props.data.users} />}/>
+	    		<Route path="/communities/:id" render={(props) => <CommunityDetails {...props} communities={this.props.data.communities} books={this.props.data.books} users={this.props.data.users} user={this.props.user}/>}/>
 	    		<Route path="/communities" render={(props) => <AllCommunities communities={this.props.data.communities} />}/>
 		  	</Switch>
 	    );
@@ -33,11 +34,32 @@ class AllCommunities extends Component {
 }
 
 class CommunityDetails extends Component {
+	joinCommunity(){
+		console.log('joinClick');
+        Dispatcher.dispatch({
+            actionType: 'join-community',
+            payload: { "communityId": this.props.match.params.id }
+        });
+	}
+
+	leaveCommunity(){
+        Dispatcher.dispatch({
+            actionType: 'leave-community',
+            payload: { "communityId": this.props.match.params.id }
+        });
+	}
+
 	render(){
-		let users = [], books = [], community, count, communityContent;
+		let users = [], books = [], community, count, communityContent, isMember = false;
+		let user = this.props.user;
 
 		if(this.props.communities){
 			community = this.props.communities[this.props.match.params.id]; //this is cheating, but who cares :)
+		}
+
+		if(community && user) {
+			isMember = user.communities.indexOf(community.id) > -1;
+			console.log(isMember)
 		}
 		
 		if(community && this.props.users){
@@ -50,7 +72,7 @@ class CommunityDetails extends Component {
 
 		
 		let hLeft = <BackButton></BackButton>;
-		let hRight = <Link className="btn" to="join">Join</Link> ; //TO DO Add Leave btn
+		let hRight = isMember ? <a className="btn" onClick={this.leaveCommunity.bind(this)} >Leave</a> : <a className="btn" onClick={this.joinCommunity.bind(this)} >Join</a> ; //TO DO Add Leave btn
 
 		if(community) {
 			communityContent = (
@@ -64,7 +86,7 @@ class CommunityDetails extends Component {
 							<li className="description">{community.description}</li>
 						</ul>
 						<MediaRowBody media={books} small />
-						<EventsTimeline events={community.events} />
+						<EventsTimeline events={community.events} isMember={isMember}/>
 					</main>
 				</div>
 			); 
@@ -87,7 +109,7 @@ class EventsTimeline extends Component {
 			<ul className="events-list">
 				<li className="title"><h3 className="media-row-title">Events</h3></li>
 				{events}
-				<li className="new-event"><a className="add-event btn">Add Event</a></li>
+				{this.props.isMember && <li className="new-event"><a className="add-event btn">Add Event</a></li>}
 			</ul>
 		);
 	}

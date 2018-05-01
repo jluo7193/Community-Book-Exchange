@@ -87,6 +87,10 @@ header > .btn:last-child {
   text-align: right;
 }
 
+header > .btn:hover {
+  color:#fff;
+}
+
 button[disabled] {
   background: #aaa !important;
 }
