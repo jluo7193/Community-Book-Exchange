@@ -68,7 +68,7 @@ export class MediaRow extends Component {
 		let filteredMedia = this.props.media && this.props.media.filter(m => m.title.toLowerCase().includes(this.state.searchStr.toLowerCase()));
 
 		return (
-			<div>
+			<div className={this.props.className} >
 				<MediaRowHeader 
 					title={this.props.title}
 					searchStr={this.state.searchStr} 
@@ -125,7 +125,7 @@ export class MediaRowBody extends Component {
 		}
 
 		return (
-			<div className="media-row">
+			<div className={"media-row" + (this.props.small ? ' small' : '')}>
 				{mediaList}
 			</div>
 		);
@@ -136,10 +136,11 @@ class MediaItem extends Component {
 	render() {
 		let media = this.props.media;
 		let lineTwo = this.props.lineTwo && media[this.props.lineTwo];
+		let statusClass = media.status ? media.status : "";
 
 		return (
-			<figure className="media whiteframe-shadow-8dp">
-				<Link to={"/books/" + media.id} >
+			<figure className={"media whiteframe-shadow-8dp " + statusClass}>
+				<Link to={"/" + media.category + "/" + media.id} >
 					<img src={media.img} />
 					<div className="figcaption-bg" style={{backgroundImage:'url(' + media.img + ')'}}>
 						{media.title}

@@ -4,6 +4,7 @@ import Home from './Home';
 import Books from './Books';
 import Communities from './Communities';
 import Profile from './Profile';
+import Dispatcher from './Dispatcher';
 
 class App extends Component {
   constructor(props) {
@@ -16,11 +17,65 @@ class App extends Component {
     fetch('/data.json').then(response => response.json()).then(data => {
       this.setState({appData: data, loggedUser:data.users[this.props.userId]});
     });
+
+    Dispatcher.register(e => {
+      switch(e.actionType) {
+        case 'request-book':
+          this.setState((state, props) => {
+            e.payload.borrowerId = props.userId;
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            newData.exchanges.push(e.payload);
+            return { appData: newData };
+          });
+          break;
+        case 'join-community':
+          this.setState((state, props) => {
+            let cId = parseInt(e.payload.communityId);
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            if(newUser.communities.indexOf(cId) === -1) {
+              newUser.communities.push(cId);
+              newData.users[newUser.id] = newUser;
+            }
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
+        case 'leave-community':
+          this.setState((state, props) => {
+            let cId = parseInt(e.payload.communityId);
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            let idx = newUser.communities.indexOf(cId);
+            if(idx > -1) {
+              newUser.communities.splice(idx, 1);
+              newData.users[newUser.id] = newUser;
+            }
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
+        case 'add-book':
+          this.setState((state, props) => {
+
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            let id = newData.books.length;
+
+            e.payload.book.id = id;
+            
+            newData.books.push(e.payload.book);
+            newUser.books.push({id:id, condition:e.payload.condition});
+            newData.users[newUser.id] = newUser;
+
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
+      }
+    });
   }
 
   render() {
     return (
-      <div className="App">
+      <div className="App" onClick={this.props.appClick}>
         <Main data={this.state.appData} user={this.state.loggedUser} />
         <Nav />
       </div>
@@ -33,8 +88,8 @@ class Main extends Component {
     return(
       <Switch>
         <Route path="/home" render={(props) => <Home data={this.props.data} user={this.props.user} />} />
-        <Route path="/books" render={(props) => <Books data={this.props.data} />}/>
-        <Route path="/communities" render={(props) => <Communities communities={this.props.data.communities} />}/>
+        <Route path="/books" render={(props) => <Books data={this.props.data} user={this.props.user} />}/>
+        <Route path="/communities" render={(props) => <Communities data={this.props.data} user={this.props.user} />}/>
         <Route path="/profile" render={(props) => <Profile data={this.props.data} user={this.props.user} />}/>
         <Route path="/" render={() => <Redirect to="/home"/>} />
       </Switch>
