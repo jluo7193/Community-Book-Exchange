@@ -53,6 +53,22 @@ class App extends Component {
             return { appData: newData, loggedUser:newUser };
           });
           break;
+        case 'add-book':
+          this.setState((state, props) => {
+
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            let id = newData.books.length;
+
+            e.payload.book.id = id;
+            
+            newData.books.push(e.payload.book);
+            newUser.books.push({id:id, condition:e.payload.condition});
+            newData.users[newUser.id] = newUser;
+
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
       }
     });
   }

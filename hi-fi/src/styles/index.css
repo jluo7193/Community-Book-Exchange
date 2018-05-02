@@ -606,31 +606,42 @@ main.addbook {
   text-align: left;
 }
 
-.addbook input {
+.add-book input {
+  font-size: 14px !important;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #777;
   margin-bottom:15px;
+  max-width:60%;
+  background:transparent;
 }
 
-.addbook img {
+.add-book img {
   float:left;
   margin-right:15px;
   margin-bottom: 15px;
 }
 
-.addbook .btn-full {
-  width:90%;
-  position: absolute;
-  bottom:0;
-  padding-left: 0;
-    padding-right: 0;
+.add-book .label-description {
+  width:100%;
+  margin-bottom:0;
+  margin-top:15px;
 }
 
-.camera {
-  display:block;
-  position:absolute;
-  top:50%;
-  width:60%;
-  margin:0 20%;
-  transform:translateY(-50%) rotate(90deg);
+.add-book textarea {
+  margin-top:15px;
+  padding:15px;
+  width:100%;
+  height:auto;
+  min-height:200px;
+  background:transparent;
+  border:1px solid;
+}
+
+.scan-book {
+  background-image:url(/img/camera-scan.jpg);
+  background-size: cover;
+  background-position: center center;
 }
 
 /*** ADD COMMUNITY ***/
@@ -1049,13 +1060,15 @@ p.rectbtncomm {
 }
 
 /* BOOK DETAILS */
-.book-details {
+.book-details,
+.add-book {
 	padding:15px;
-	color:#0468BF;
+	/*color:#0468BF;*/
 	text-align: left;
 }
 
-.book-details .title {
+.book-details .title,
+.add-book .title {
   font-size: 20px;
   font-weight: bold;
   margin-top:0;
@@ -1080,13 +1093,15 @@ p.rectbtncomm {
   font-size:14px;
 }
 
-.book-details img {
+.book-details img,
+.add-book img {
 	max-width:30%;
 	float:left;
 	margin:0 15px 15px 0;
 }
 
-.book-details .btn-r {
+.book-details .btn-r,
+.add-book .btn-r {
   width:100%;
   /*position: absolute;*/
   /*bottom:16px;*/

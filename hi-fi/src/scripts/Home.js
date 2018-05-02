@@ -29,7 +29,7 @@ class Home extends Component {
 	    	<div>
 		    	<Header leftBtn={hLeft} title={"Hello, " + user.firstName} rightBtn={hRight}/>
 				<main className="scroll">
-					<MediaRow title="Books" media={suggestedBooks} addLink="/addbook"/>
+					<MediaRow title="Books" media={suggestedBooks} addLink="/books/scanbook"/>
 					<MediaRow title="Communities" media={suggestedCommunities} addLink="/addcommunity"/>
 				</main>
 			</div>

@@ -10,6 +10,8 @@ class Books extends Component {
 	render() {
 	    return (
 	    	<Switch>
+	    		<Route path="/books/scanbook" component={ScanBook}/>
+	    		<Route path="/books/addbook" render={(props) => <AddBook {...props}/>}/>
 	    		<Route path="/books/:id/request" render={(props) => <BookRequest {...props} books={this.props.data.books} users={this.props.data.users}/>}/>
 	    		<Route path="/books/:id" render={(props) => <BookDetails {...props} exchanges={this.props.data.exchanges} books={this.props.data.books} users={this.props.data.users} user={this.props.user}/>}/>
 	    		<Route path="/books" render={(props) => <AllBooks books={this.props.data.books} />}/>
@@ -21,7 +23,7 @@ class Books extends Component {
 class AllBooks extends Component {
 	render(){		
 		let hLeft = <Link className="btn" to="/notifications"><i className="fa fa-lg fa-bell"></i></Link>;
-		let hRight = <Link className="btn" to="/addbook"><i className="fa fa-lg fa-plus"></i></Link>;
+		let hRight = <Link className="btn" to="/books/scanbook"><i className="fa fa-lg fa-plus"></i></Link>;
 
 		return(
 			<div>
@@ -222,6 +224,67 @@ class BookRequest extends Component {
 		}
 
 		return bookContent;
+	}
+}
+
+class ScanBook extends Component {
+	render(){
+
+		let hLeft = <BackButton></BackButton>;
+		let hRight = <Link className="btn" to="/books/addbook">Skip</Link>
+
+		return(
+			<div>
+				<Header leftBtn={hLeft} title="Scan Book" rightBtn={hRight}/>
+			    <main className="scan-book">
+			  	</main>
+			</div>
+		);
+	}
+}
+
+class AddBook extends Component {
+	constructor(props) {
+	    super(props);
+	    this.state = {title: 'Harry Potter and the Order of Phoenix', img:'/img/harry-potter.png', condition:'Good', description:"There is a Door at the end of a silent corridor. And it's haunting Harry Potter's dreams. Why else would he be waking in the middle of the night, screaming in terror? Here are just a few things on Harry's mind: A Defense Against the Dark Arts teacher with a personality like poisoned honey. A venomous, disgruntled house-elf. Ron as keeper of the Gryffindor Quidditch team. The looming terror of the end-of-term Ordinary Wizarding Level exams...and of course, the growing threat of He-Who-Must-Not-Be-Named."};
+	}
+
+	addBook(){
+		Dispatcher.dispatch({
+            actionType: 'add-book',
+            payload: { "book":{title:this.state.title, img:this.state.img, description:this.state.description, category:"books" }, "condition":this.state.condition }
+        });
+        this.props.history.push('/home');
+	}
+
+	onChange(e){
+		this.setState({ [e.target.name]: e.target.value });
+	}
+
+	render(){
+		let hLeft = <BackButton></BackButton>;
+		let hRight = <a className="btn" onClick={this.addBook.bind(this)}>Add</a>
+
+		return(
+			<div>
+				<Header leftBtn={hLeft} title="Add Book" rightBtn={hRight}/>
+					<main className="add-book scroll">
+						<img className="whiteframe-shadow-4dp" src={this.state.img} />
+					    <input name="title" type="text" className="title" value={this.state.title} onChange={this.onChange.bind(this)}/>
+					    <label>Condition: </label>
+					    <select name="condition" value={this.state.condition} onChange={this.onChange.bind(this)}>
+					        <option value="Excellent">Excellent</option>
+					        <option value="Good">Good</option>
+					        <option value="Fair">Fair</option>
+					        <option value="Poor">Poor</option>
+					        <option value="Terrible">Terrible</option>
+					    </select>
+					    <label className="label-description">Description: </label>
+					    <textarea name="description" className="description" value={this.state.description} onChange={this.onChange.bind(this)}></textarea>
+					    <a className="whiteframe-shadow-8dp btn-outline btn-r" onClick={this.addBook.bind(this)}>Add Book</a>
+					</main>
+			</div>
+		);
 	}
 }
 
