@@ -65,7 +65,7 @@ class Profile extends Component {
 						</div>
 					</div>
 
-					<MediaRow title="My Books" media={myBooks} addLink="/addBook" className="my-books"/>
+					<MediaRow title="My Books" media={myBooks} addLink="/books/addBook" className="my-books"/>
 					<MediaRow title="My Communities" media={myCommunities} addLink="/addCommunity"/>
 					<MediaRow title="Borrowed Books" media={borrowedBooks} className="borrowed-books"/>
 					<MediaRow title="Waitlist" media={waitlist}/>

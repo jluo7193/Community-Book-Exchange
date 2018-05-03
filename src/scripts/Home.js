@@ -19,7 +19,7 @@ class Home extends Component {
 		let suggestedBooks, suggestedCommunities;
 
 		let user = this.props.user;
-		let hLeft = <Link className="btn" to="/notifications"><i className="fa fa-lg fa-bell"></i></Link>;
+		let hLeft = <Link className="btn" to={{ pathname: "/notifications", state: { modal: true } }} ><i className="fa fa-lg fa-bell"></i></Link>;
 		let hRight = <Link className="btn" to="/profile"><i className="fa fa-lg fa-star"></i> {user.rating}</Link>;
 		
 		if(this.props.data.books) suggestedBooks = shuffleArray(this.props.data.books).slice(0, 5);
