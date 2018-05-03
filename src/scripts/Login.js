@@ -7,7 +7,7 @@ class Login extends Component {
 	constructor(props){
 		super(props);
 		this.login = this.login.bind(this);
-		this.state = {loggedUser:-1, errorMsg:""};
+		this.state = {loggedUser:2, errorMsg:""};
 	}
 
 	login(e){

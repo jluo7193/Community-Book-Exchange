@@ -4,6 +4,7 @@ import Home from './Home';
 import Books from './Books';
 import Communities from './Communities';
 import Profile from './Profile';
+import Notifications from './Notifications';
 import Dispatcher from './Dispatcher';
 
 class App extends Component {
@@ -69,6 +70,33 @@ class App extends Component {
             return { appData: newData, loggedUser:newUser };
           });
           break;
+
+        case 'add-to-waitlist':
+          this.setState((state, props) => {
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            let id = e.payload.bookId;
+            
+            newUser.waitlist.push(id);
+            newData.users[newUser.id] = newUser;
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
+
+        case 'remove-from-waitlist':
+          this.setState((state, props) => {
+            let newData = JSON.parse(JSON.stringify(state.appData)); //Deep Clone the Object
+            let newUser = JSON.parse(JSON.stringify(state.loggedUser)); //Deep Clone the Object
+            let id = e.payload.bookId;
+            let idx = newUser.waitlist.indexOf(id);
+            if(idx > -1) {
+              newUser.waitlist.splice(idx, 1);
+              newData.users[newUser.id] = newUser;
+            }
+            newData.users[newUser.id] = newUser;
+            return { appData: newData, loggedUser:newUser };
+          });
+          break;
       }
     });
   }
@@ -91,6 +119,7 @@ class Main extends Component {
         <Route path="/books" render={(props) => <Books data={this.props.data} user={this.props.user} />}/>
         <Route path="/communities" render={(props) => <Communities data={this.props.data} user={this.props.user} />}/>
         <Route path="/profile" render={(props) => <Profile data={this.props.data} user={this.props.user} />}/>
+        <Route path="/notifications" render={(props) => <Notifications user={this.props.user} />} />
         <Route path="/" render={() => <Redirect to="/home"/>} />
       </Switch>
     );

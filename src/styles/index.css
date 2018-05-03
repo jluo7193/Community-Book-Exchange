@@ -519,7 +519,7 @@ figure.media {
 }
 
 .my-books figure.media.borrowed-return-notset > a::after {
-    content: 'Borrowed';
+    content: 'Lent';
     font-family: FontAwesome, sans-serif;
     position: absolute;
     color: #fff;

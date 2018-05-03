@@ -38,21 +38,40 @@ class AllBooks extends Component {
 
 
 class BookDetails extends Component {
+	constructor(props){
+		super(props);
+		this.bookId = parseInt(this.props.match.params.id);
+	}
+	
+
+	addToWaitlist(){
+		Dispatcher.dispatch({
+            actionType: 'add-to-waitlist',
+            payload: {"bookId":this.bookId}
+        });
+	}
+
+	removeFromWaitlist(){
+		Dispatcher.dispatch({
+            actionType: 'remove-from-waitlist',
+            payload: {"bookId":this.bookId}
+        });
+	}
+
 	render(){
 		let users = [], book, count, bookContent, bookStatus;
 
 		if(this.props.books){
-			book = this.props.books[this.props.match.params.id]; //this is cheating, but who cares :)
+			book = this.props.books[this.bookId]; //this is cheating, but who cares :)
 
 			if(this.props.users){
 				users = this.props.users.filter(u => u.books.filter(b => b.id === book.id ).length);
 				count = users.length === 1 ? users[0].username : users.length + ' users';
 			}
-
 			//Set book status
 			if(this.props.exchanges && this.props.user) {
 				let activeExchange = this.props.exchanges.filter(e => e.bookId === book.id && (e.borrowerId == this.props.user.id || e.lenderId == this.props.user.id) && (e.status === "requested" || e.status === "borrowed"))[0];
-
+				console.log();
 				if(activeExchange) {
 					let userRole = activeExchange.lenderId == this.props.user.id ? 'lender' : 'borrower';
 					bookStatus = userRole + '-';
@@ -70,7 +89,7 @@ class BookDetails extends Component {
 							bookStatus += "borrowed-return-" + activeExchange.pickup.status;
 						}
 					}
-				} else if(this.props.user.waitlist.indexOf(this.props.match.params.id) > -1) {
+				} else if(this.props.user.waitlist.indexOf(this.bookId) > -1) {
 					bookStatus = "waitlisted";
 				} else if(!users.length) {
 					bookStatus = "unavailable";
@@ -82,11 +101,13 @@ class BookDetails extends Component {
 		let hLeft = <BackButton></BackButton>;
 
 		if(book) {
-			let actionButton, hRight, alert;
+			let actionButton, hRight, alert, queueSize;
 			switch(bookStatus){
 				case 'waitlisted':
+					queueSize = this.props.users && this.props.users.reduce((n,u) => u.waitlist.indexOf(book.id) > -1 ? ++n : n, 0) || 0; //Count the queue size
 					//TODO Implement onClick - removing from waitlist
-					actionButton = <button className="whiteframe-shadow-4dp btn-outline btn-r">Remove From Waitlist</button>;
+					actionButton = <button className="whiteframe-shadow-4dp btn-outline btn-r" onClick={this.removeFromWaitlist.bind(this)}>Remove From Waitlist ({queueSize})</button>;
+					hRight = <a className="btn" onClick={this.removeFromWaitlist.bind(this)}>Remove</a>;
 					break;
 				case 'lender-requested-pickup-notset':
 					actionButton = <button disabled className="whiteframe-shadow-4dp btn-outline btn-r">Setup Pickup</button>;
@@ -141,8 +162,9 @@ class BookDetails extends Component {
 					alert = <Alert bsStyle="success"><strong>Return Confirmed.</strong> Awaiting Exchange</Alert>;
 					break;
 				case 'unavailable':
-					actionButton = <button className="whiteframe-shadow-8dp btn-outline btn-r">Add to Waitlist</button>;
-					hRight = <a className="btn">Waitlist</a>;
+					queueSize = this.props.users && this.props.users.reduce((n,u) => u.waitlist.indexOf(book.id) > -1 ? ++n : n, 0) || 0; //Count the queue size
+					actionButton = <button className="whiteframe-shadow-8dp btn-outline btn-r" onClick={this.addToWaitlist.bind(this)}>Add to Waitlist ({queueSize})</button>;
+					hRight = <a className="btn" onClick={this.addToWaitlist.bind(this)}>Add</a>;
 					break;
 				default:
 					actionButton = <Link className="whiteframe-shadow-8dp btn-outline btn-r" to={this.props.match.url + "/request"}>Request Book</Link>;
