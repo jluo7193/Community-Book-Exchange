@@ -4,6 +4,6 @@ With a growing demand for books and, consequently, book-sharing, more and more p
 
 The Community Books app connects people with similar interests so they can share knowledge and books on any subject
 
-This Github project is a Prototype of the app
+This github project is a prototype of the app
 
-[## Live Demo ##](https://community-books.herokuapp.com/)
+## [Live Demo](https://community-books.herokuapp.com/) ##
